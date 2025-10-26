@@ -1,17 +1,25 @@
 import Container from '@mui/material/Container'
 import './App.css'
-import { Paper, Typography } from '@mui/material'
+import { CssBaseline, Paper, Typography } from '@mui/material'
+import ThemeProvider from './theme/ThemeProvider'
+import { CartProvider } from './context/CartContext'
+import { Route, Routes } from 'react-router-dom'
+import CartPage from './pages/CartPage'
+import ProductPage from './pages/ProductPage'
 
 function App() {
   return (
-    <Container sx={{mt: 5, textAlign: 'center'}}>
-      <Typography variant='h3' gutterBottom>
-        React exercize - e commerce site with material ui styled components
-      </Typography>
-      <Paper elevation={3}>
-        some content
-      </Paper>
-    </Container>
+     <ThemeProvider>
+       <CssBaseline />
+       <CartProvider>
+        <Container sx={{mt: 5, textAlign: 'center'}}>
+          <Routes>
+            <Route path="/" element={<ProductPage />} />
+            <Route path="/cart" element={<CartPage />} />
+          </Routes>
+        </Container>
+       </CartProvider>
+     </ThemeProvider>
   )
 }
 
