@@ -7,10 +7,8 @@ import ProductDialog from "./ProductDialog";
 interface ProductItemProps {
   product: Product;
 }
-
 export default function ProductItem({ product }: ProductItemProps) {
   const [open, setOpen] = useState(false);
-
   return (
     <>
       <Card>
@@ -23,7 +21,6 @@ export default function ProductItem({ product }: ProductItemProps) {
           <Button variant="contained" color="primary" fullWidth onClick={() => setOpen(true)}>Add to cart</Button>
         </CardActions>
       </Card>
-
       <ProductDialog open={open} onClose={() => setOpen(false)} product={product} />
     </>
   )

@@ -15,18 +15,14 @@ interface ProductDialogProps {
     onClose: () => void;
     product: Product;
 }
-
 export default function ProductDialog({ open, onClose, product }: ProductDialogProps) {
     const { addProduct } = useContext(CartContext);
     const [quantity, setQuantity] = useState<number>(1);
     const [size, setSize] = useState<string>("SM");
-
     const handleAddProduct = () => {
         addProduct({...product,size,quantity});
         onClose();
     }
-
-
     return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="xs">
       <DialogTitle>{product.title}</DialogTitle>
@@ -41,13 +37,11 @@ export default function ProductDialog({ open, onClose, product }: ProductDialogP
           value={size}
           onChange={(e) => setSize(e.target.value)}
           fullWidth
-          margin="normal"
-        >
+          margin="normal">
           <MenuItem value="SM">Small</MenuItem>
           <MenuItem value="MD">Medium</MenuItem>
           <MenuItem value="LG">Large</MenuItem>
         </TextField>
-
         <TextField
           type="number"
           label="Quantity"
@@ -58,7 +52,6 @@ export default function ProductDialog({ open, onClose, product }: ProductDialogP
           inputProps={{ min: 1 }}
         />
       </DialogContent>
-
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
         <Button variant="contained" color="primary" onClick={handleAddProduct}>

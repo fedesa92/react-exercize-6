@@ -6,12 +6,10 @@ export interface Product {
     description: string,
     size: string
 }
-
 export const initialCartState: { product: Array<Product>, total: number } = {
     product: new Array<Product>(),
     total: 0
 }
-
 export type CartAction =
   | { type: "ADD_PRODUCT"; payload: Product }
   | { type: "REMOVE_PRODUCT"; payload: number } // could be index or id
@@ -32,17 +30,12 @@ const cartReducer = (state: { product: Array<Product>, total: number }, action: 
             } else {
                 updatedproduct = [...state.product, action.payload];
             }
-
-            const updatedTotal = updatedproduct.reduce(
-                (sum, i) => sum + i.price * i.quantity,
-                0
-            );
+            const updatedTotal = updatedproduct.reduce((sum, i) => sum + i.price * i.quantity,0);
             return { product: updatedproduct, total: updatedTotal };
         }
         case "REMOVE_PRODUCT": {
             const filtered = state.product.filter((i: any, index: number) => index !== action.payload);
             const total = filtered.reduce((sum: number, i: Product) => sum + i.price * i.quantity, 0);
-
             return { product: filtered, total };
         }
         case "CLEAR_CART": 
@@ -52,5 +45,4 @@ const cartReducer = (state: { product: Array<Product>, total: number }, action: 
             return state;
     }
 }
-
 export default cartReducer;

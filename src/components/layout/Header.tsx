@@ -11,30 +11,24 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 export default function Header() {
     const { product } = useContext(CartContext);
     const totalProducts = product.reduce((sum,i) => sum + i.quantity, 0);
-
     return (
-    <AppBar position="static">
-        <Toolbar sx={{ display: 'flex', justifyContent: "space-between"}}>
-            <Typography variant="h6"
-                component={Link}
-                to="/"
-                sx={{ color: "inherit", textDecoration: "none", fontWeight: "bold"}}>
-                Shop
-            </Typography>
-            <div>
-                <Button color="inherit" component={Link}
-                to="/" sx={{ textTransform:"none", mr: 2}}>
-                    Products
-                </Button>
-                <Button color="inherit" component={Link}
-                to="/cart" sx={{ textTransform:"none"}}>
-                    Cart 
-                    <Badge badgeContent={totalProducts} color="secondary">
-                        <ShoppingCartIcon />
-                    </Badge>
-                </Button>
-            </div>
-        </Toolbar>
-    </AppBar>
+        <AppBar position="static">
+            <Toolbar sx={{ display: 'flex', justifyContent: "space-between"}}>
+                <Typography variant="h6"
+                    component={Link} to="/"
+                    sx={{ color: "inherit", textDecoration: "none", fontWeight: "bold"}}>
+                    Shop
+                </Typography>
+                <div>
+                    <Button color="inherit" component={Link} to="/" sx={{ textTransform:"none", mr: 2}}>
+                        Products
+                    </Button>
+                    <Button color="inherit" component={Link} to="/cart" sx={{ textTransform:"none"}}>
+                        Cart 
+                        <Badge badgeContent={totalProducts} color="secondary"><ShoppingCartIcon /></Badge>
+                    </Button>
+                </div>
+            </Toolbar>
+        </AppBar>
     )
 }

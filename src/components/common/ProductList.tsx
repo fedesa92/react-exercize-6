@@ -5,7 +5,6 @@ import ProductItem from "./ProductItem";
 interface ProductListProps {
     products: Array<Product>;
 }
-
 export default function ProductList({ products }: ProductListProps) {
     return (
         <Grid container spacing={3}>
