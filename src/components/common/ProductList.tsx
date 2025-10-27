@@ -1,5 +1,6 @@
 import Grid from "@mui/material/Grid";
 import type { Product } from "../../store/CartReducer";
+import ProductItem from "./ProductItem";
 
 interface ProductListProps {
     products: Array<Product>;
