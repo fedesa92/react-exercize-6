@@ -6,12 +6,14 @@ import { CartProvider } from './context/CartContext'
 import { Route, Routes } from 'react-router-dom'
 import CartPage from './pages/CartPage'
 import ProductPage from './pages/ProductPage'
+import Header from './components/layout/Header'
 
 function App() {
   return (
      <ThemeProvider>
        <CssBaseline />
        <CartProvider>
+        <Header />
         <Container sx={{mt: 5, textAlign: 'center'}}>
           <Routes>
             <Route path="/" element={<ProductPage />} />
